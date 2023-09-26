@@ -13,15 +13,5 @@
 # находясь перед некоторым кустом заданной во входном файле грядки.
 
 n = int(input('Введите количествово кустов: '))
-gryadka = list(map(int, input(f'Введите количество ягона на каждом из {n} кустов через пробел: ').split()[:n]))
-    
-print(f'Количество ягот на кустах: {gryadka}')
-a = int(input('Введите номер куста с которого собираются ягоды: '))
-sum = 0
-if a == len(gryadka):
-    sum = gryadka[-2] + gryadka[-1] + gryadka[0]
-elif a == 1:
-    sum = gryadka[0] + gryadka[1] + gryadka[-1]
-else:
-    sum = gryadka[a-1] + gryadka[a-2] + gryadka[a]
-print(f'{sum}, ягод собрано с кустов')
+gryadka = [int(i) for i in input('Введите количество ягона на каждом из кустов через пробел: ').split()[:n]]
+print(max([gryadka[i - 2] + gryadka[i - 1] + gryadka[i] for i in range(n)]))
